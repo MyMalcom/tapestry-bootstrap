@@ -292,11 +292,25 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
                         <phase>site</phase>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>            
         </plugins>
+        <extensions>
+			<extension>
+				<groupId>org.springframework.build.aws</groupId>
+				<artifactId>org.springframework.build.aws.maven</artifactId>
+				<version>3.0.0.RELEASE</version>
+			</extension>
+        </extensions>
     </build>
 
-    <repositories>      
+    <repositories>  
+        <repository>
+            <id>devlab722-repo</id>            
+            <url>http://nexus.devlab722.net/nexus/content/repositories/releases</url>    
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>        	
     </repositories>
 
     <pluginRepositories>
@@ -315,14 +329,13 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
         </profile>
 	</profiles>
 
-<!--  	
-	<distributionManagement>
-  <repository>
-    <id>gh-pages</id>
-    <url>file:///${basedir}/../tapestry-bootstrap-pages/repository/</url>
-  </repository>
-</distributionManagement>
--->
+    <distributionManagement>
+        <repository>
+            <id>maven-s3-mobivery-repo</id>
+            <name>S3 Mobivery Repository</name>
+            <url>s3://maven-repo.mobivery.com/release</url>
+        </repository>
+    </distributionManagement>
 
     <properties>
         <tapestry-release-version>5.3.4</tapestry-release-version>
